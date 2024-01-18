@@ -89,7 +89,7 @@ class BoardBuilder(Builder):
                 match name:
                     case 'Pawn':
                         for col in range(8):
-                            if self._product.cells[1][col] == "*":
+                            if self._product.cells[1][col]:
                                 self._product.cells[1][col] = figure
 
                     case 'Bishop':

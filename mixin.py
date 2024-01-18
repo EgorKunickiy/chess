@@ -4,7 +4,8 @@ class BoardValidationMixin:
     def validator(self, coords: str) -> True | False:
         try:
             element_1, element_2 = coords
-            if len(element_1) > 0 or len(element_2) > 0:
+            print(element_1, element_2)
+            if len(element_1) > 1 or len(element_2) > 1:
                 return False
             if element_1.isdigit():
                 return False
@@ -21,7 +22,7 @@ class BoardValidationMixin:
     def convert_coords(self, coords: str) -> tuple[int, int] | None:
         if self.validator(coords):
             element1, element_2 = coords
-            coord_1 = self.__list_letters.index(element1)
+            coord_1 = self.__list_letters.index(element1.upper())
             coord_2 = int(element_2) - 1
             return (coord_1, coord_2)
         else:

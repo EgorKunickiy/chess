@@ -15,17 +15,17 @@ class Director:
         self.board_builder = builder_2
         self.player_builder = builder_1
 
-    def generate_players(self) -> tuple(Player, Player):
+    def generate_players(self) -> tuple[Player, Player]:
         self.player_builder.generate_figures()
         self.player_builder.set_color(Color.white)
 
         player1 = self.player_builder.product()
-        self.player_builder.set_color(Color.black)
         self.player_builder.generate_figures()
+        self.player_builder.set_color(Color.black)
         player2 = self.player_builder.product()
         return (player1, player2)
 
     def generate_board(self, player_white: Player, player_black: Player) -> Board:
-        self.board_builder.arrangement_of_figures(self.player1)
-        self.board_builder.arrangement_of_figures(self.player2)
+        self.board_builder.arrangement_of_figures(player_white)
+        self.board_builder.arrangement_of_figures(player_black)
         return self.board_builder.product()
